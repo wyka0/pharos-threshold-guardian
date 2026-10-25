@@ -1,0 +1,116 @@
+{
+  "schema": "threshold-guardian/run/v1",
+  "runId": "6f080865-eeaa-47b2-999c-88833f55e4a3",
+  "timestamp": "2026-10-25T23:19:40.409Z",
+  "network": {
+    "name": "Pharos Atlantic Testnet",
+    "chainId": 688689,
+    "rpcUrl": "https://atlantic.dplabs-internal.com",
+    "explorerUrl": "https://atlantic.pharosscan.xyz"
+  },
+  "chainVerification": {
+    "source": "chain-mcp",
+    "chainId": 688689,
+    "chainIdMatchesConfig": true,
+    "latestBlock": "31880477",
+    "clientVersion": "portal/1.0.0",
+    "nativeSymbol": "PHRS"
+  },
+  "walletAddress": "0xE9edd930130bC1F97EB68C86519d4dD1eE778657",
+  "token": {
+    "address": "0x39f964952F5259B6D7fE33f73b456E05519098A6",
+    "symbol": "DEMO",
+    "decimals": 18,
+    "codeBytes": 3081,
+    "source": "chain-mcp"
+  },
+  "spender": {
+    "address": "0x7833A6d977381E76484BEBf408fB8ce967aEc0Ad",
+    "codeBytes": 1375
+  },
+  "action": {
+    "name": "Demo action",
+    "mode": "decision-only"
+  },
+  "configPath": "C:\\pharos-threshold-guardian\\config\\guardian.json",
+  "pinnedBlock": "31880477",
+  "conditions": [
+    {
+      "id": "native-balance",
+      "type": "nativeBalance",
+      "label": "Native PHRS balance",
+      "enabled": true,
+      "operator": "gte",
+      "thresholdConfigured": "1",
+      "thresholdBaseUnits": "1000000000000000000",
+      "thresholdFormatted": "1",
+      "unit": "PHRS",
+      "actualRaw": "96356464000000000",
+      "actualFormatted": "0.096356464",
+      "status": "FAIL",
+      "passed": false,
+      "source": "chain-mcp",
+      "tool": "get_balance",
+      "error": null,
+      "explanation": "On-chain value 0.096356464 PHRS is NOT greater than or equal to the configured threshold 1 PHRS."
+    },
+    {
+      "id": "token-balance",
+      "type": "erc20Balance",
+      "label": "DEMO token balance",
+      "enabled": true,
+      "operator": "gte",
+      "thresholdConfigured": "100",
+      "thresholdBaseUnits": "100000000000000000000",
+      "thresholdFormatted": "100",
+      "unit": "DEMO",
+      "actualRaw": "1000000000000000000000",
+      "actualFormatted": "1000",
+      "status": "PASS",
+      "passed": true,
+      "source": "chain-mcp",
+      "tool": "eth_call(balanceOf)",
+      "error": null,
+      "explanation": "On-chain value 1000 DEMO is greater than or equal to the configured threshold 100 DEMO."
+    },
+    {
+      "id": "token-allowance",
+      "type": "erc20Allowance",
+      "label": "DEMO allowance for SupportDemoTestnet",
+      "enabled": true,
+      "operator": "gte",
+      "thresholdConfigured": "50",
+      "thresholdBaseUnits": "50000000000000000000",
+      "thresholdFormatted": "50",
+      "unit": "DEMO",
+      "actualRaw": "5000000000000000000",
+      "actualFormatted": "5",
+      "status": "FAIL",
+      "passed": false,
+      "source": "chain-mcp",
+      "tool": "eth_call(allowance)",
+      "error": null,
+      "explanation": "On-chain value 5 DEMO is NOT greater than or equal to the configured threshold 50 DEMO."
+    }
+  ],
+  "summary": {
+    "total": 3,
+    "enabled": 3,
+    "passed": 1,
+    "failed": 2,
+    "errors": 0,
+    "skipped": 0
+  },
+  "decision": {
+    "outcome": "HOLD",
+    "reason": "2 of 3 enabled condition(s) failed: \"native-balance\" (actual 0.096356464 PHRS, required >= 1 PHRS); \"token-allowance\" (actual 5 DEMO, required >= 50 DEMO). Every configured condition must pass before the action may fire."
+  },
+  "notes": [
+    "Configuration loaded from C:\\pharos-threshold-guardian\\config\\guardian.json.",
+    "Chain verified: live chain ID 688689 matches configured chain ID 688689 (source: Chain MCP get_chain_info).",
+    "All condition reads in this run are pinned to block 31880477 so the three values describe one consistent state.",
+    "Token metadata: symbol DEMO, 18 decimals (source: Chain MCP eth_call).",
+    "Token contract code confirmed at 0x39f964952F5259B6D7fE33f73b456E05519098A6 (3081 bytes).",
+    "Spender contract code confirmed at 0x7833A6d977381E76484BEBf408fB8ce967aEc0Ad (1375 bytes)."
+  ]
+}
