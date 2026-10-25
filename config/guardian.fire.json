@@ -1,0 +1,44 @@
+{
+  "network": {
+    "name": "Pharos Atlantic Testnet",
+    "chainId": 688689,
+    "rpcUrl": "https://atlantic.dplabs-internal.com",
+    "explorerUrl": "https://atlantic.pharosscan.xyz"
+  },
+  "walletAddress": "0xE9edd930130bC1F97EB68C86519d4dD1eE778657",
+  "tokenAddress": "0x39f964952f5259b6d7fe33f73b456e05519098a6",
+  "spenderAddress": "0x7833a6d977381e76484bebf408fb8ce967aec0ad",
+  "conditions": [
+    {
+      "id": "native-balance",
+      "type": "nativeBalance",
+      "enabled": true,
+      "operator": "gte",
+      "threshold": "0.05",
+      "unit": "PHRS",
+      "label": "Native PHRS balance"
+    },
+    {
+      "id": "token-balance",
+      "type": "erc20Balance",
+      "enabled": true,
+      "operator": "gte",
+      "threshold": "100",
+      "unit": "DEMO",
+      "label": "DEMO token balance"
+    },
+    {
+      "id": "token-allowance",
+      "type": "erc20Allowance",
+      "enabled": true,
+      "operator": "gte",
+      "threshold": "5",
+      "unit": "DEMO",
+      "label": "DEMO allowance for SupportDemoTestnet"
+    }
+  ],
+  "action": {
+    "name": "Demo action (FIRE demonstration: thresholds below or equal to observed on-chain values)",
+    "mode": "decision-only"
+  }
+}

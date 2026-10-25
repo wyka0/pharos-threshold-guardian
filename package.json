@@ -1,0 +1,36 @@
+﻿{
+  "name": "pharos-threshold-guardian",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Pharos Agent Arena Task 7 - Threshold Guardian: evaluates multiple configurable on-chain conditions against real Atlantic Testnet state before deciding whether an action should FIRE or HOLD. Read-only; never signs or sends transactions.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "pharos-threshold-guardian": "dist/src/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "guardian": "npm run -s build && node dist/src/index.js",
+    "guardian:fire": "npm run -s build && node dist/src/index.js --config config/guardian.fire.json",
+    "guardian:hold": "npm run -s build && node dist/src/index.js --config config/guardian.hold.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint src test",
+    "test": "npm run -s build && node --test \"dist/test/*.test.js\"",
+    "test:live": "npm run -s build && node dist/test/guardian.live.test.js",
+    "scan:secrets": "node scripts/secret-scan.mjs",
+    "audit:prod": "npm audit --omit=dev",
+    "verify": "npm run lint && npm run typecheck && npm test && npm run scan:secrets && npm run audit:prod"
+  },
+  "dependencies": {
+    "viem": "^2.57.7"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "eslint": "^9.39.5",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.71.2"
+  }
+}

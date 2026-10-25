@@ -1,0 +1,117 @@
+{
+  "schema": "threshold-guardian/run/v1",
+  "runId": "428cdccc-7011-43bb-90ac-4097db6ead81",
+  "timestamp": "2026-10-25T22:51:27.868Z",
+  "network": {
+    "name": "Pharos Atlantic Testnet",
+    "chainId": 688689,
+    "rpcUrl": "https://atlantic.dplabs-internal.com",
+    "explorerUrl": "https://atlantic.pharosscan.xyz"
+  },
+  "chainVerification": {
+    "source": "rpc-fallback",
+    "chainId": 688689,
+    "chainIdMatchesConfig": true,
+    "latestBlock": "31879750",
+    "clientVersion": null,
+    "nativeSymbol": null
+  },
+  "walletAddress": "0xE9edd930130bC1F97EB68C86519d4dD1eE778657",
+  "token": {
+    "address": "0x39f964952F5259B6D7fE33f73b456E05519098A6",
+    "symbol": "DEMO",
+    "decimals": 18,
+    "codeBytes": 3081,
+    "source": "rpc-fallback"
+  },
+  "spender": {
+    "address": "0x7833A6d977381E76484BEBf408fB8ce967aEc0Ad",
+    "codeBytes": 1375
+  },
+  "action": {
+    "name": "Demo action (FIRE demonstration: thresholds below or equal to observed on-chain values)",
+    "mode": "decision-only"
+  },
+  "configPath": "C:\\pharos-threshold-guardian\\config\\guardian.fire.json",
+  "pinnedBlock": "31879750",
+  "conditions": [
+    {
+      "id": "native-balance",
+      "type": "nativeBalance",
+      "label": "Native PHRS balance",
+      "enabled": true,
+      "operator": "gte",
+      "thresholdConfigured": "0.05",
+      "thresholdBaseUnits": "50000000000000000",
+      "thresholdFormatted": "0.05",
+      "unit": "PHRS",
+      "actualRaw": "96356464000000000",
+      "actualFormatted": "0.096356464",
+      "status": "PASS",
+      "passed": true,
+      "source": "rpc-fallback",
+      "tool": "eth_getBalance",
+      "error": null,
+      "explanation": "On-chain value 0.096356464 PHRS is greater than or equal to the configured threshold 0.05 PHRS."
+    },
+    {
+      "id": "token-balance",
+      "type": "erc20Balance",
+      "label": "DEMO token balance",
+      "enabled": true,
+      "operator": "gte",
+      "thresholdConfigured": "100",
+      "thresholdBaseUnits": "100000000000000000000",
+      "thresholdFormatted": "100",
+      "unit": "DEMO",
+      "actualRaw": "1000000000000000000000",
+      "actualFormatted": "1000",
+      "status": "PASS",
+      "passed": true,
+      "source": "rpc-fallback",
+      "tool": "eth_call(balanceOf)",
+      "error": null,
+      "explanation": "On-chain value 1000 DEMO is greater than or equal to the configured threshold 100 DEMO."
+    },
+    {
+      "id": "token-allowance",
+      "type": "erc20Allowance",
+      "label": "DEMO allowance for SupportDemoTestnet",
+      "enabled": true,
+      "operator": "gte",
+      "thresholdConfigured": "5",
+      "thresholdBaseUnits": "5000000000000000000",
+      "thresholdFormatted": "5",
+      "unit": "DEMO",
+      "actualRaw": "5000000000000000000",
+      "actualFormatted": "5",
+      "status": "PASS",
+      "passed": true,
+      "source": "rpc-fallback",
+      "tool": "eth_call(allowance)",
+      "error": null,
+      "explanation": "On-chain value 5 DEMO is greater than or equal to the configured threshold 5 DEMO."
+    }
+  ],
+  "summary": {
+    "total": 3,
+    "enabled": 3,
+    "passed": 3,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "decision": {
+    "outcome": "FIRE",
+    "reason": "All 3 enabled condition(s) passed their configured thresholds."
+  },
+  "notes": [
+    "Configuration loaded from C:\\pharos-threshold-guardian\\config\\guardian.fire.json.",
+    "Chain MCP verification failed: MCP request initialize failed after 3 attempt(s): fetch failed. Is the Pharos Chain MCP server running at http://127.0.0.1:3999/mcp?",
+    "Chain verified: live chain ID 688689 matches configured chain ID 688689 (source: documented JSON-RPC fallback eth_chainId).",
+    "All condition reads in this run are pinned to block 31879750 so the three values describe one consistent state.",
+    "Token metadata: symbol DEMO, 18 decimals (source: documented JSON-RPC fallback eth_call).",
+    "Token contract code confirmed at 0x39f964952F5259B6D7fE33f73b456E05519098A6 (3081 bytes).",
+    "Spender contract code confirmed at 0x7833A6d977381E76484BEBf408fB8ce967aEc0Ad (1375 bytes)."
+  ]
+}
