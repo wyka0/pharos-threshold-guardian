@@ -2,7 +2,7 @@
   "name": "pharos-threshold-guardian",
   "version": "1.0.0",
   "private": true,
-  "description": "Pharos Agent Arena Task 7 - Threshold Guardian: evaluates multiple configurable on-chain conditions against real Atlantic Testnet state before deciding whether an action should FIRE or HOLD. Read-only; never signs or sends transactions.",
+  "description": "Pharos Agent Arena - Threshold Guardian: evaluates multiple configurable on-chain conditions against real Atlantic Testnet state before deciding whether an action should FIRE or HOLD. Read-only; never signs or sends transactions.",
   "license": "MIT",
   "type": "module",
   "engines": {

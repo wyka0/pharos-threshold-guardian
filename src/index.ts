@@ -25,7 +25,7 @@ interface CliArgs {
 }
 
 const HELP = `
-THRESHOLD GUARDIAN - Pharos Agent Arena Task 7
+THRESHOLD GUARDIAN - Pharos Agent Arena
 Evaluates configurable on-chain conditions on Pharos Atlantic Testnet and
 decides whether an action should FIRE or HOLD. Read-only: this tool never
 signs transactions and never asks for private keys.

@@ -1,4 +1,4 @@
-# Threshold Guardian — Pharos Agent Arena Task 7
+# Threshold Guardian — Pharos Agent Arena
 
 Threshold Guardian is a read-only Skill that evaluates multiple configurable
 on-chain conditions against **real Pharos Atlantic Testnet state** before
